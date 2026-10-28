@@ -2,3 +2,6 @@
 .hugo_build.lock
 /public/
 /resources/
+/work/
+/hugo-cloudflare/
+/hugo-cloudflare.zip
