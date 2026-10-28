@@ -1,0 +1,140 @@
+/* Header et alignement des boutons à droite */
+body > header ul {
+  display: inline-flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* Sélecteur de langue (FR / EN) style segmented control */
+.lang-switch-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--surface-2);
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  border: 1px solid var(--border);
+  gap: 0.15rem;
+}
+
+.btn-lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 0.35rem;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1;
+  user-select: none;
+}
+
+.btn-lang:hover {
+  color: var(--text-1);
+}
+
+.btn-lang.active {
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: default;
+}
+
+/* Bouton pour changer de thème */
+#theme-toggle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--text-1);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--surface-2);
+}
+
+#theme-toggle svg {
+  display: block;
+}
+
+#theme-toggle svg.hidden {
+  display: none !important;
+}
+
+/* Espacement des catégories sous le titre */
+nav.categories {
+  margin-bottom: 2.5rem;
+}
+
+/* Vidéo de présentation sur la page d'accueil */
+.home-video-section {
+  max-width: 1280px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .home-video-section {
+    margin-bottom: 4rem;
+  }
+}
+
+.home-video-section .video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--surface-2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+}
+
+.home-video-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Amélioration de la typographie de la page À propos */
+.prose {
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-1);
+}
+
+.prose hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.prose ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}

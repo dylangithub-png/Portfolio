@@ -1,0 +1,76 @@
+baseURL = 'https://portfoliomoyardperuffo.pages.dev/'
+defaultContentLanguage = 'fr'
+defaultContentLanguageInSubdir = false
+theme = 'gallery'
+
+[params]
+  defaultTheme = 'dark'
+
+[params.author]
+  name = 'Delphine Moyard & Dylan Peruffo'
+
+# Configuration pour les images dans Hugo v0.168+
+[imaging]
+  [imaging.jpeg]
+    quality = 85
+  [imaging.webp]
+    quality = 85
+
+[languages]
+  [languages.fr]
+    locale = 'fr-CH'
+    label = 'FR'
+    weight = 1
+    title = 'Delphine Moyard & Dylan Peruffo'
+    [languages.fr.params]
+      title = 'Delphine Moyard & Dylan Peruffo'
+      description = 'Photographie, créations picturales, design 3D et ateliers de formation par Delphine Moyard et Dylan Peruffo.'
+    [[languages.fr.menu.main]]
+      name = "Accueil"
+      url = "/"
+      weight = 10
+    [[languages.fr.menu.main]]
+      name = "Duo & Collaborations"
+      url = "/categories/collaborations/"
+      weight = 20
+    [[languages.fr.menu.main]]
+      name = "Delphine Moyard"
+      url = "/categories/delphine-moyard/"
+      weight = 30
+    [[languages.fr.menu.main]]
+      name = "Dylan Peruffo"
+      url = "/categories/dylan-peruffo/"
+      weight = 40
+    [[languages.fr.menu.main]]
+      name = "À propos de..."
+      url = "/a-propos/"
+      weight = 50
+
+  [languages.en]
+    locale = 'en-US'
+    label = 'EN'
+    weight = 2
+    title = 'Delphine Moyard & Dylan Peruffo'
+    [languages.en.params]
+      title = 'Delphine Moyard & Dylan Peruffo'
+      description = 'Fine art photography, paintings, 3D design and workshops by Delphine Moyard and Dylan Peruffo.'
+    [[languages.en.menu.main]]
+      name = "Home"
+      url = "/en/"
+      weight = 10
+    [[languages.en.menu.main]]
+      name = "Duo & Collaborations"
+      url = "/en/categories/collaborations/"
+      weight = 20
+    [[languages.en.menu.main]]
+      name = "Delphine Moyard"
+      url = "/en/categories/delphine-moyard/"
+      weight = 30
+    [[languages.en.menu.main]]
+      name = "Dylan Peruffo"
+      url = "/en/categories/dylan-peruffo/"
+      weight = 40
+    [[languages.en.menu.main]]
+      name = "About..."
+      url = "/en/a-propos/"
+      weight = 50

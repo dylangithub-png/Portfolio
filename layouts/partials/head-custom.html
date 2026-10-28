@@ -1,0 +1,23 @@
+<script>
+  // 1. Détection et application instantanée du thème (Dark / Light)
+  (function () {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const theme = (savedTheme === 'light' || savedTheme === 'dark') ? savedTheme : (prefersLight ? 'light' : 'dark');
+    document.documentElement.classList.remove('dark', 'light');
+    document.documentElement.classList.add(theme);
+  })();
+
+  // 2. Mémorisation et redirection de la dernière langue choisie sur l'accueil
+  (function () {
+    try {
+      const savedLang = localStorage.getItem('preferred_lang');
+      const currentPath = window.location.pathname;
+      const isRoot = (currentPath === '/' || currentPath === '/index.html');
+      
+      if (isRoot && savedLang === 'en') {
+        window.location.replace('/en/');
+      }
+    } catch (e) {}
+  })();
+</script>

@@ -1,0 +1,72 @@
+<header>
+  {{ with .Parent }}
+    <a class="btn btn-square" href="{{ .RelPermalink | default .Site.Home.RelPermalink }}" title="{{ .Title }}">
+      <svg width="24" height="24" data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path clip-rule="evenodd" fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z"></path>
+      </svg>
+    </a>
+  {{ else }}
+    <a class="btn" href="{{ .Site.Home.RelPermalink }}">
+      {{ .Site.Title }}
+    </a>
+  {{ end }}
+  <ul>
+    {{ if hugo.IsMultilingual }}
+      <li class="lang-switch-item">
+        <div class="lang-switcher">
+          {{ range .AllTranslations }}
+            {{ $lbl := .Language.Label | default .Language.LanguageName | default .Lang | upper }}
+            {{ if eq .Lang $.Lang }}
+              <span class="btn-lang active" aria-current="true">{{ $lbl }}</span>
+            {{ else }}
+              <a class="btn-lang" href="{{ .RelPermalink }}" data-lang="{{ .Lang }}" title="{{ $lbl }}">{{ $lbl }}</a>
+            {{ end }}
+          {{ else }}
+            {{ range site.Languages }}
+              {{ $lbl := .Label | default .LanguageName | default .Lang | upper }}
+              {{ if eq .Lang $.Lang }}
+                <span class="btn-lang active" aria-current="true">{{ $lbl }}</span>
+              {{ else }}
+                {{ $targetSite := index (where site.Sites "Language.Lang" .Lang) 0 }}
+                <a class="btn-lang" href="{{ $targetSite.Home.RelPermalink }}" data-lang="{{ .Lang }}">{{ $lbl }}</a>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </li>
+    {{ end }}
+    <li>
+      <button class="btn btn-square" id="theme-toggle" type="button" title="{{ if eq .Lang "fr" }}Changer le thème (noir / blanc){{ else }}Toggle theme (dark / light){{ end }}" aria-label="Changer le thème (noir / blanc)">
+        <!-- Sun icon (shown in dark mode to switch to light) -->
+        <svg class="icon-sun hidden" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon icon (shown in light mode to switch to dark) -->
+        <svg class="icon-moon hidden" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </li>
+    {{ if site.Menus.main }}
+      <li>
+        <button class="btn btn-square" id="menu-toggle" aria-expanded="false" type="button" title="{{ T "menu" | default "Menu" }}">
+          <svg class="icon-menu" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path clip-rule="evenodd" fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"></path>
+          </svg>
+          <svg class="icon-close hidden" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path clip-rule="evenodd" fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z"></path>
+          </svg>
+        </button>
+      </li>
+    {{ end }}
+  </ul>
+</header>
+{{ partial "menu.html" . }}
