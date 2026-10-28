@@ -39,3 +39,14 @@ avant de commencer vos modifications, avec un dossier de travail sans changement
 
 Le suivi des déploiements est dans Cloudflare : Workers & Pages →
 portfoliomoyardperuffo → Deployments.
+
+## Compilation des styles
+
+Le thème utilise Dart Sass. Sur un nouveau Mac, installez la distribution
+autonome depuis https://sass-lang.com/install/ et placez son exécutable `sass`
+dans le PATH. Il est déjà installé sur ce Mac. Les commandes `hugo server`
+et `hugo --minify` restent identiques.
+
+Sur Cloudflare Pages, la commande de compilation est `bash build-cloudflare.sh`.
+Le script installe Dart Sass 1.106.1 avant de compiler le site avec Hugo.
+Le dossier de sortie reste `public` et la version de Hugo reste 0.168.0.

@@ -15,7 +15,7 @@
       <li class="lang-switch-item">
         <div class="lang-switcher">
           {{ range .AllTranslations }}
-            {{ $lbl := .Language.Label | default .Language.LanguageName | default .Lang | upper }}
+            {{ $lbl := .Language.Label | default .Language.Name | upper }}
             {{ if eq .Lang $.Lang }}
               <span class="btn-lang active" aria-current="true">{{ $lbl }}</span>
             {{ else }}
@@ -23,12 +23,12 @@
             {{ end }}
           {{ else }}
             {{ range site.Languages }}
-              {{ $lbl := .Label | default .LanguageName | default .Lang | upper }}
-              {{ if eq .Lang $.Lang }}
+              {{ $lbl := .Label | default .Name | upper }}
+              {{ if eq .Name $.Language.Name }}
                 <span class="btn-lang active" aria-current="true">{{ $lbl }}</span>
               {{ else }}
-                {{ $targetSite := index (where site.Sites "Language.Lang" .Lang) 0 }}
-                <a class="btn-lang" href="{{ $targetSite.Home.RelPermalink }}" data-lang="{{ .Lang }}">{{ $lbl }}</a>
+                {{ $targetSite := index (where site.Sites "Language.Name" .Name) 0 }}
+                <a class="btn-lang" href="{{ $targetSite.Home.RelPermalink }}" data-lang="{{ .Name }}">{{ $lbl }}</a>
               {{ end }}
             {{ end }}
           {{ end }}
